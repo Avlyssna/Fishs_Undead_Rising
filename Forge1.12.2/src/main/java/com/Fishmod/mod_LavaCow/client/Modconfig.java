@@ -29,6 +29,7 @@ public class Modconfig {
 	public static int pSpawnRate_Parasite;
 	public static double Parasite_Health;
 	public static double Parasite_Attack;
+	public static String[] Parasite_Hostlist = new String[0];
 	
 	public static int pSpawnRate_UndeadSwine;
 	public static double UndeadSwine_Health;
@@ -199,6 +200,12 @@ public class Modconfig {
 		Parasite_SandSpawn = config.get("Parasite", "parasite from sand blocks", 2, "Rate of spawning Parasite when destroying sand blocks in the desert [0-100]", 0, 100).getInt(2);
 		Parasite_Plague = config.get("Parasite", "parasite attacks everything", false, "Should Parasite attack ALL livings [false/true]").getBoolean(false);
 		Parasite_Attach = config.get("Parasite", "parasite attacks by attaching onto target", true, "Parasite will attack their target by attaching on them [false/true]").getBoolean(true);
+		Parasite_Hostlist = config.getStringList("available host for parasite", "Parasite", 
+				new String[] {
+						"minecraft:zombie",
+						"mod_lavacow:zombiefrozen",
+						"mod_lavacow:zombiemushroom"},
+		"Allow Parasite to spawn from listed mob. Ex. \"minecraft:zombie\" or \"mod_lavacow:zombiefrozen\"");
 		
 		pSpawnRate_UndeadSwine = config.get("Undead Swine", "undeadswine spawn rate", 15, "Set the spawn rate of Undead swine [0-10000]", 0, 10000).getInt(15);
 		UndeadSwine_DropHeart = config.get(Configuration.CATEGORY_GENERAL, "drop heart", 10, "Set the drop rate of Undying Heart [0-100]", 0, 100).getInt(10);
@@ -294,8 +301,8 @@ public class Modconfig {
 		Banshee_Ability_Radius = config.get("Banshee", "banshee scream radius", 3.0D, "Set the effect radius of Banshee scream [1-1000]", 1, 1000).getDouble(3.0D);
 		
 		pSpawnRate_Weta = config.get("Weta", "weta spawn rate", 30, "Set the spawn rate of Weta [0-100]", 0, 100).getInt(30);
-		Weta_Health = config.get("Weta", "weta health", 34.0D, "Maximum Weta health [1-1000]", 1, 1000).getDouble(12.0D);
-		Weta_Attack = config.get("Weta", "weta attack", 7.0D, "Weta strength [1-1000]", 1, 1000).getDouble(1.0D);
+		Weta_Health = config.get("Weta", "weta health", 12.0D, "Maximum Weta health [1-1000]", 1, 1000).getDouble(12.0D);
+		Weta_Attack = config.get("Weta", "weta attack", 1.0D, "Weta strength [1-1000]", 1, 1000).getDouble(1.0D);
 		
 		pSpawnRate_Avaton = config.get("Avaton", "avaton spawn rate", 20, "Set the spawn rate of Avaton [0-100]", 0, 100).getInt(20);
 		Avaton_Health = config.get("Avaton", "avaton health", 30.0D, "Maximum Avaton health [1-1000]", 1, 1000).getDouble(30.0D);
