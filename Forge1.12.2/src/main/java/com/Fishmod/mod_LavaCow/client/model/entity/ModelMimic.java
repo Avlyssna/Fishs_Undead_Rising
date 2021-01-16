@@ -204,9 +204,7 @@ public class ModelMimic extends ModelBase {
     
     @Override
 	public void setLivingAnimations(EntityLivingBase entityIn, float limbSwing, float limbSwingAmount, float ageInTicks) {
-    	EntityMimic Entity = ((EntityMimic)entityIn);
-    	
-    	if((Entity.isAggressive() || Entity.isTamed()) && !Entity.isSitting())
+    	if((((EntityMimic)entityIn).isAggressive() || ((EntityMimic)entityIn).isTamed()) && !((EntityMimic)entityIn).isSitting())
         {
         	this.Chest_top.rotateAngleX = -0.2F + (-0.02F * MathHelper.sin(0.12F * entityIn.ticksExisted + 0.1F)); 
         	this.Chest_Base.setRotationPoint(0.0F, 18.0F, 1.0F);
@@ -242,7 +240,7 @@ public class ModelMimic extends ModelBase {
         }
         else
         {
-        	if(Entity.isSitting() || Entity.IdleTimer > 0) {
+        	if(((EntityMimic)entityIn).isSitting() || entityIn.ticksExisted % 3000.0F > 2976.0F) {
         		this.Chest_top.rotateAngleX = -0.2F + (-0.02F * MathHelper.sin(0.12F * entityIn.ticksExisted + 0.1F)); 
             	this.Chest_Base.setRotationPoint(0.0F, 18.0F, 1.0F);
             	this.Eye_r.setRotationPoint(-2.0F, -4.0F, -5.0F);
